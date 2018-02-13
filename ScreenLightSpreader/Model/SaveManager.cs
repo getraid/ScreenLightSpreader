@@ -5,31 +5,43 @@ namespace ScreenLightSpreader.Model
 {
     public class SaveManager
     {
-        public static void SaveIP(string ip)
+        public static void SaveIp(string ip)
         {
             Properties.Settings.Default.IpAdress = ip;
             Properties.Settings.Default.Save();
         }
 
-        public static string LoadIP()
+        public static string LoadIp()
         {
             Properties.Settings.Default.Upgrade();
             return Properties.Settings.Default.IpAdress;
         }
 
-        public static void SaveAutoMode(bool auto)
+        public static void SavePort(string port)
         {
-
-            Properties.Settings.Default.automode = auto;
+            Properties.Settings.Default.PortNumber = port;
             Properties.Settings.Default.Save();
         }
 
-        public static bool LoadAutoMode()
+        public static string LoadPort()
         {
             Properties.Settings.Default.Upgrade();
+            return Properties.Settings.Default.PortNumber;
+        }
 
-            return Properties.Settings.Default.automode;
+
+        public static void SaveIsAutostarting(bool autostarting)
+        {
+            Properties.Settings.Default.isAutostarting = autostarting;
+            Properties.Settings.Default.Save();
+        }
+
+        public static bool LoadIsAutostarting()
+        {
+            Properties.Settings.Default.Upgrade();
+            return Properties.Settings.Default.isAutostarting;
 
         }
+
     }
 }

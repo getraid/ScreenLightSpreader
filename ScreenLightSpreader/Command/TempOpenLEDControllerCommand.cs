@@ -1,29 +1,25 @@
 ﻿using System;
 using System.Windows.Input;
-using ScreenLightSpreader.Model;
 using ScreenLightSpreader.ViewModel;
 
 namespace ScreenLightSpreader.Command
 {
-    public class SaveSettingsCommand : ICommand
+    public class TempOpenLEDControllerCommand:ICommand
     {
         private readonly MainViewModel _mainViewModel;
 
-        public SaveSettingsCommand(MainViewModel mainViewModel)
+        public TempOpenLEDControllerCommand(MainViewModel mainViewModel)
         {
             _mainViewModel = mainViewModel;
         }
+
         public bool CanExecute(object parameter)
         {
-
             return true;
         }
-
         public void Execute(object parameter)
         {
-            SaveManager.SaveIp(_mainViewModel.IpAdress);
-            SaveManager.SavePort(_mainViewModel.PortNumber);
-            SaveManager.SaveIsAutostarting(_mainViewModel.IsAutostarting);
+            System.Diagnostics.Process.Start("http://"+_mainViewModel.IpAdress);
         }
 
         public event EventHandler CanExecuteChanged;

@@ -46,5 +46,29 @@ namespace ScreenLightSpreader.Properties {
                 this["automode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isAutostarting {
+            get {
+                return ((bool)(this["isAutostarting"]));
+            }
+            set {
+                this["isAutostarting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
+        public string PortNumber {
+            get {
+                return ((string)(this["PortNumber"]));
+            }
+            set {
+                this["PortNumber"] = value;
+            }
+        }
     }
 }
