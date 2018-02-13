@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScreenLightSpreader.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" MinWidth="505" MinHeight="235">
+        Title="Screen Light Spreader" Height="350" Width="525" MinWidth="505" MinHeight="235">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
@@ -38,13 +38,16 @@
         <TextBox Grid.Column="3" Height="22" Grid.Row="3" TextWrapping="Wrap" Text="{Binding IpAdress, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Button Content="Save settings"  Command="{Binding SaveSettingsCommand}"  VerticalAlignment="Center" Grid.Column="4" Grid.Row="6" HorizontalAlignment="Center" VerticalContentAlignment="Top" Height="20" Width="74"/>
         <CheckBox Content="Running" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" IsChecked="{Binding Automode, UpdateSourceTrigger=PropertyChanged}" Height="14" Grid.ColumnSpan="4" IsEnabled="False"/>
-        <Button Content="Start" Command="{Binding StartCommand, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Grid.Row="7" VerticalAlignment="Center" Grid.ColumnSpan="3" Height="20"/>
+        <Button Content="{Binding BtnStartText}" Command="{Binding StartCommand, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Grid.Row="7" VerticalAlignment="Center" Grid.ColumnSpan="3" Height="20"/>
         <CheckBox Content="Set Running on start" IsChecked="{Binding IsAutostarting}" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" Grid.ColumnSpan="4" Height="14" />
         <Label Content="Autostart" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="26" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
         <Button Content="RGB-Controller" Command="{Binding TempOpenLedControllerCommand}" Grid.Column="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Content="Port:" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" RenderTransformOrigin="0.625,0.423"/>
         <TextBox Grid.ColumnSpan="2" Grid.Column="6" Height="22" Grid.Row="3" TextWrapping="Wrap" Text="{Binding PortNumber, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Label Content="Connected" Visibility="{Binding ConnectedVisibility}" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top" Width="75" Background="#FF8DFB88" Grid.ColumnSpan="2"/>
+        <Label Content="github.com/getraid/ScreenLightSpreader" VerticalAlignment="Top" Grid.ColumnSpan="4" FontSize="8" HorizontalAlignment="Left"/>
+
 
     </Grid>
+
 </Window>

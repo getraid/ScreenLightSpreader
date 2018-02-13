@@ -29,29 +29,33 @@ namespace ScreenLightSpreader.Command
 
         public void Execute(object parameter)
         {
-            //UMSCHREIBEN-> ws.OnOpen/OnClose um fehler und status zu setzen
-
             if (IPAddress.TryParse(_mainViewModel.IpAdress, out var ipAdress) && int.TryParse(_mainViewModel.PortNumber, out var trashInt))
             {
-                string Ip = Convert.ToString(ipAdress);
-                _mainViewModel.ws = new WebSocketSharp.WebSocket("ws://" + Ip + ":" + _mainViewModel.PortNumber);
-
-                if (_mainViewModel.WebSocketConnector.OpenConnection(_mainViewModel.ws))
+                if (!_mainViewModel.Automode)
                 {
-                    _mainViewModel.Automode = true;
-                    _mainViewModel.ConnectedVisibility = Visibility.Visible;
+
+
+                    string Ip = Convert.ToString(ipAdress);
+
+                    _mainViewModel.ws = new WebSocketSharp.WebSocket("ws://" + Ip + ":" + _mainViewModel.PortNumber);
+                    _mainViewModel.WebSocketConnector.InitEventHandlers(_mainViewModel);
+                    if (_mainViewModel.WebSocketConnector.OpenConnection(_mainViewModel.ws))
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Couldn't reach Websocket-Server. Timeout or wrong port");
+                    }
                 }
                 else
                 {
-                    _mainViewModel.ConnectedVisibility = Visibility.Hidden;
-                    _mainViewModel.Automode = false;
-                    MessageBox.Show("Couldn't reach Websocket-Server. Timeout or wrong port");
+                    _mainViewModel.ws.Close();
                 }
             }
             else
             {
-                _mainViewModel.ConnectedVisibility = Visibility.Hidden;
-                _mainViewModel.Automode = false;
+
                 MessageBox.Show("Couldn't find Websocket-Server. Ip or Port wrong");
             }
         }

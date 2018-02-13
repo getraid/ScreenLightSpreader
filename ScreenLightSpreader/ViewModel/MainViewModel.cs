@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Input;
 using ScreenLightSpreader.Annotations;
 using ScreenLightSpreader.Command;
 using ScreenLightSpreader.Model;
@@ -16,13 +17,28 @@ namespace ScreenLightSpreader.ViewModel
         private bool _isAutostarting;
         private string _portNumber;
         private Visibility _connectedVisibility;
+        private string _btnStartText;
 
         public MainViewModel()
         {
             InitCommand();
             InitModel();
             LoadSavedValues();
+
+            RgbData = new RgbData(0, 0, 0);
+
+            if (Application.Current.MainWindow != null)
+                Application.Current.MainWindow.Closing += new CancelEventHandler(MainWindow_Closing);
+            BtnStartText = "Start";
             ConnectedVisibility = Visibility.Hidden;
+
+            if (IsAutostarting)
+            {
+                if (StartCommand.CanExecute(null))
+                {
+                  StartCommand.Execute(null);
+                }
+            }
         }
 
         public SaveSettingsCommand SaveSettingsCommand { get; set; }
@@ -30,6 +46,19 @@ namespace ScreenLightSpreader.ViewModel
         public StartCommand StartCommand { get; set; }
         public WebSocketConnector WebSocketConnector { get; set; }
         public WebSocketSharp.WebSocket ws { get; set; }
+        public RgbData RgbData { get; set; }
+
+        public string BtnStartText
+        {
+            get { return _btnStartText; }
+            set
+            {
+                if (value == _btnStartText) return;
+                _btnStartText = value;
+                OnPropertyChanged();
+
+            }
+        }
 
         public Visibility ConnectedVisibility
         {
@@ -82,6 +111,15 @@ namespace ScreenLightSpreader.ViewModel
                 if (value == _automode) return;
                 _automode = value;
                 OnPropertyChanged();
+                if (!Automode)
+                {
+                    BtnStartText = "Start";
+                }
+                else
+                {
+                    BtnStartText = "Stop";
+                }
+
             }
         }
 
@@ -96,6 +134,7 @@ namespace ScreenLightSpreader.ViewModel
         {
             WebSocketConnector = new WebSocketConnector();
 
+
         }
 
         private void LoadSavedValues()
@@ -105,6 +144,11 @@ namespace ScreenLightSpreader.ViewModel
             IsAutostarting = SaveManager.LoadIsAutostarting();
         }
 
+
+        void MainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            ws?.Close();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         [NotifyPropertyChangedInvocator]
