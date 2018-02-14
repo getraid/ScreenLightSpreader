@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Threading;
 using System.Windows;
 using ScreenLightSpreader.ViewModel;
 using WebSocketSharp;
@@ -9,34 +10,43 @@ namespace ScreenLightSpreader.Model
     {
         public RgbManager()
         {
-            
+
         }
 
-        // UMSCHREIBEN -> WEG MIT BACKGROUND WORKER, NORMALER THREAD; name buffer umbennenen
-
-        public void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e, WebSocket ws, int time)
+        public void DoWork(WebSocket ws, int time)
         {
-            RgbData rgb = new RgbData(0,0,0);
+            RgbData rgb = new RgbData(0, 0, 0);
             while (true)
             {
                 FlashWhite(ws, rgb, time);
-                e.Cancel
             }
-          
         }
 
-        private static void FlashWhite(WebSocket ws, RgbData rgb,int time)
+        private static void FlashWhite(WebSocket ws, RgbData rgb, int time)
         {
-          
-                for (int i = 0; i < 255; i++)
+
+            for (int i = 0; i < 255; i++)
+            {
+                rgb.r = i;
+                rgb.g = i;
+                rgb.b = i;
+                rgb.SendValues(ws);
+                System.Threading.Thread.Sleep(time);
+                if (i == 254)
                 {
-                    rgb.r = i;
-                    rgb.g = i;
-                    rgb.b = i;
-                    rgb.SendValues(ws);
-                    System.Threading.Thread.Sleep(time);
+                    for (int j = 255; j > 0; j--)
+                    {
+                        rgb.r = j;
+                        rgb.g = j;
+                        rgb.b = j;
+                        rgb.SendValues(ws);
+                        System.Threading.Thread.Sleep(time);
+                    }
+             
                 }
-            
+
+            }
+
         }
     }
 }

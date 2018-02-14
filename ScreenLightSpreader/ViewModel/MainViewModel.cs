@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Windows;
 using ScreenLightSpreader.Annotations;
 using ScreenLightSpreader.Command;
@@ -41,7 +42,7 @@ namespace ScreenLightSpreader.ViewModel
             }
         }
 
-        public BackgroundWorker BackgroundWorker { get; set; }
+        public Thread MainWorkThread { get; set; }
         public SaveSettingsCommand SaveSettingsCommand { get; set; }
         public TempOpenLEDControllerCommand TempOpenLedControllerCommand { get; set; }
         public StartCommand StartCommand { get; set; }
@@ -140,16 +141,17 @@ namespace ScreenLightSpreader.ViewModel
         private void InitViewModelProps()
         {
             RgbManager = new RgbManager();
-            BackgroundWorker = new BackgroundWorker();
-
             if (Application.Current.MainWindow != null)
                 Application.Current.MainWindow.Closing += MainWindow_Closing;
             BtnStartText = "Start";
             ConnectedVisibility = Visibility.Hidden;
-            BackgroundWorker.DoWork += delegate(object sender, DoWorkEventArgs e)
-            {
-                RgbManager.BackgroundWorker_DoWork(sender, e, ws, BufferTimeInt);
-            };
+
+        }
+
+        public void CreateThread()
+        {
+            MainWorkThread = new Thread(() =>
+                RgbManager.DoWork(ws, BufferTimeInt));
         }
 
         private void InitCommand()

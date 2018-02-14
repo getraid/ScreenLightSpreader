@@ -4,6 +4,7 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
+using ScreenLightSpreader.Model;
 using ScreenLightSpreader.ViewModel;
 using WebSocketSharp;
 
@@ -35,27 +36,33 @@ namespace ScreenLightSpreader.Command
                 if (!_mainViewModel.Running)
                 {
                     string Ip = Convert.ToString(ipAdress);
-
                     _mainViewModel.ws = new WebSocketSharp.WebSocket("ws://" + Ip + ":" + _mainViewModel.PortNumber);
                     _mainViewModel.WebSocketConnector.InitEventHandlers(_mainViewModel);
-                    if (_mainViewModel.WebSocketConnector.OpenConnection(_mainViewModel.ws))
-                    {
-                        _mainViewModel.BackgroundWorker.RunWorkerAsync();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Couldn't reach Websocket-Server. Timeout or wrong port");
-                    }
+                    StartThreadAndWsConnection();
                 }
                 else
                 {
-                   _mainViewModel.BackgroundWorker.CancelAsync();
+                    _mainViewModel.MainWorkThread.Abort();
+                    _mainViewModel.MainWorkThread = null;
                     _mainViewModel.ws.Close();
                 }
             }
             else
             {
                 MessageBox.Show("There seems to be an error in your input.");
+            }
+        }
+
+        private void StartThreadAndWsConnection()
+        {
+            if (_mainViewModel.WebSocketConnector.OpenConnection(_mainViewModel.ws))
+            {
+                _mainViewModel.CreateThread();
+                _mainViewModel.MainWorkThread.Start();
+            }
+            else
+            {
+                MessageBox.Show("Couldn't reach Websocket-Server. Timeout or wrong port");
             }
         }
 
