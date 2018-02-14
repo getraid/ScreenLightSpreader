@@ -17,6 +17,18 @@ namespace ScreenLightSpreader.Model
             return Properties.Settings.Default.IpAdress;
         }
 
+        public static void SaveBuffTime(string buffer)
+        {
+            Properties.Settings.Default.Buffertime = buffer;
+            Properties.Settings.Default.Save();
+        }
+
+        public static string LoadBufftime()
+        {
+            Properties.Settings.Default.Upgrade();
+            return Properties.Settings.Default.Buffertime;
+        }
+
         public static void SavePort(string port)
         {
             Properties.Settings.Default.PortNumber = port;
@@ -28,7 +40,6 @@ namespace ScreenLightSpreader.Model
             Properties.Settings.Default.Upgrade();
             return Properties.Settings.Default.PortNumber;
         }
-
 
         public static void SaveIsAutostarting(bool autostarting)
         {
@@ -42,6 +53,5 @@ namespace ScreenLightSpreader.Model
             return Properties.Settings.Default.isAutostarting;
 
         }
-
     }
 }

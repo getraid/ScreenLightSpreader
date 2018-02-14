@@ -29,19 +29,18 @@ namespace ScreenLightSpreader.Command
 
         public void Execute(object parameter)
         {
-            if (IPAddress.TryParse(_mainViewModel.IpAdress, out var ipAdress) && int.TryParse(_mainViewModel.PortNumber, out var trashInt))
+            if (IPAddress.TryParse(_mainViewModel.IpAdress, out var ipAdress) && int.TryParse(_mainViewModel.PortNumber, out var trashInt) && int.TryParse(_mainViewModel.BufferTime, out var buffRes))
             {
-                if (!_mainViewModel.Automode)
+                _mainViewModel.BufferTimeInt = buffRes;
+                if (!_mainViewModel.Running)
                 {
-
-
                     string Ip = Convert.ToString(ipAdress);
 
                     _mainViewModel.ws = new WebSocketSharp.WebSocket("ws://" + Ip + ":" + _mainViewModel.PortNumber);
                     _mainViewModel.WebSocketConnector.InitEventHandlers(_mainViewModel);
                     if (_mainViewModel.WebSocketConnector.OpenConnection(_mainViewModel.ws))
                     {
-
+                        _mainViewModel.BackgroundWorker.RunWorkerAsync();
                     }
                     else
                     {
@@ -50,18 +49,17 @@ namespace ScreenLightSpreader.Command
                 }
                 else
                 {
+                   _mainViewModel.BackgroundWorker.CancelAsync();
                     _mainViewModel.ws.Close();
                 }
             }
             else
             {
-
-                MessageBox.Show("Couldn't find Websocket-Server. Ip or Port wrong");
+                MessageBox.Show("There seems to be an error in your input.");
             }
         }
 
         private event EventHandler CanExecuteChanged;
-
         event EventHandler ICommand.CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }

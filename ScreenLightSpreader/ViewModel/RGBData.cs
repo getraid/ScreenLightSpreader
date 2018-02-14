@@ -1,14 +1,17 @@
 ﻿using System.IO;
-using System.Reflection.Emit;
 using System.Runtime.Serialization.Json;
+using WebSocketSharp;
 
 namespace ScreenLightSpreader.ViewModel
 {
+    /// <summary>
+    /// This class is used to define RGB values and send them directly via a WebSocketSharp-connection (via serialized JSON)
+    /// </summary>
     public class RgbData
     {
-        private int _r;
-        private int _g;
         private int _b;
+        private int _g;
+        private int _r;
 
         public RgbData()
         {
@@ -70,19 +73,25 @@ namespace ScreenLightSpreader.ViewModel
             }
         }
 
-
+        /// <summary>
+        /// Serialize this object into a string
+        /// </summary>
+        /// <returns></returns>
         public string GetJsonRgbObj()
         {
-            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(RgbData));
-            MemoryStream ms = new MemoryStream();
+            var js = new DataContractJsonSerializer(typeof(RgbData));
+            var ms = new MemoryStream();
             js.WriteObject(ms, this);
             ms.Position = 0;
-            StreamReader sr = new StreamReader(ms);
+            var sr = new StreamReader(ms);
             return sr.ReadToEnd();
-
         }
 
-        public void SendValues(WebSocketSharp.WebSocket ws)
+        /// <summary>
+        /// Send this rgb-object to the websocket server
+        /// </summary>
+        /// <param name="ws">WebSocketSharp Websocket-object</param>
+        public void SendValues(WebSocket ws)
         {
             ws.Send(GetJsonRgbObj());
         }

@@ -70,5 +70,17 @@ namespace ScreenLightSpreader.Properties {
                 this["PortNumber"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string Buffertime {
+            get {
+                return ((string)(this["Buffertime"]));
+            }
+            set {
+                this["Buffertime"] = value;
+            }
+        }
     }
 }

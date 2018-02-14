@@ -24,6 +24,7 @@ namespace ScreenLightSpreader.Command
             SaveManager.SaveIp(_mainViewModel.IpAdress);
             SaveManager.SavePort(_mainViewModel.PortNumber);
             SaveManager.SaveIsAutostarting(_mainViewModel.IsAutostarting);
+            SaveManager.SaveBuffTime(_mainViewModel.BufferTime);
         }
 
         public event EventHandler CanExecuteChanged;

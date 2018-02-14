@@ -61,6 +61,7 @@
     <Compile Include="Command\SaveSettingsCommand.cs" />
     <Compile Include="Command\StartCommand.cs" />
     <Compile Include="Command\TempOpenLEDControllerCommand.cs" />
+    <Compile Include="Model\RGBManager.cs" />
     <Compile Include="Model\SaveManager.cs" />
     <Compile Include="Model\WebSocketConnector.cs" />
     <Compile Include="Properties\Annotations.cs" />

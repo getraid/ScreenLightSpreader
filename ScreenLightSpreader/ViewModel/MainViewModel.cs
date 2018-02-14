@@ -1,68 +1,80 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Input;
 using ScreenLightSpreader.Annotations;
 using ScreenLightSpreader.Command;
 using ScreenLightSpreader.Model;
 using WebSocketSharp;
-using WebSocketSharp.Net.WebSockets;
 
 namespace ScreenLightSpreader.ViewModel
 {
+    /// <summary>
+    ///     MainViewModel ties all properties together.
+    /// </summary>
     public class MainViewModel : INotifyPropertyChanged
     {
-        private bool _automode;
+        private string _btnStartText;
+        private string _bufferTime;
+        private int _bufferTimeInt;
+        private Visibility _connectedVisibility;
         private string _ipAdress;
         private bool _isAutostarting;
         private string _portNumber;
-        private Visibility _connectedVisibility;
-        private string _btnStartText;
+        private bool _running;
 
         public MainViewModel()
         {
             InitCommand();
             InitModel();
             LoadSavedValues();
+            InitViewModelProps();
+            InitAutostart();
+        }
 
-            RgbData = new RgbData(0, 0, 0);
-
-            if (Application.Current.MainWindow != null)
-                Application.Current.MainWindow.Closing += new CancelEventHandler(MainWindow_Closing);
-            BtnStartText = "Start";
-            ConnectedVisibility = Visibility.Hidden;
-
-            if (IsAutostarting)
+        public int BufferTimeInt
+        {
+            get => _bufferTimeInt;
+            set
             {
-                if (StartCommand.CanExecute(null))
-                {
-                  StartCommand.Execute(null);
-                }
+                if (value >= 0)
+                    _bufferTimeInt = value;
             }
         }
 
+        public BackgroundWorker BackgroundWorker { get; set; }
         public SaveSettingsCommand SaveSettingsCommand { get; set; }
         public TempOpenLEDControllerCommand TempOpenLedControllerCommand { get; set; }
         public StartCommand StartCommand { get; set; }
         public WebSocketConnector WebSocketConnector { get; set; }
-        public WebSocketSharp.WebSocket ws { get; set; }
-        public RgbData RgbData { get; set; }
+        public WebSocket ws { get; set; }
+
+        public RgbManager RgbManager { get; set; }
 
         public string BtnStartText
         {
-            get { return _btnStartText; }
+            get => _btnStartText;
             set
             {
                 if (value == _btnStartText) return;
                 _btnStartText = value;
                 OnPropertyChanged();
+            }
+        }
 
+        public string BufferTime
+        {
+            get => _bufferTime;
+            set
+            {
+                if (value == _bufferTime) return;
+                _bufferTime = value;
+                OnPropertyChanged();
             }
         }
 
         public Visibility ConnectedVisibility
         {
-            get { return _connectedVisibility; }
+            get => _connectedVisibility;
             set
             {
                 if (value == _connectedVisibility) return;
@@ -70,6 +82,7 @@ namespace ScreenLightSpreader.ViewModel
                 OnPropertyChanged();
             }
         }
+
         public string PortNumber
         {
             get => _portNumber;
@@ -103,24 +116,40 @@ namespace ScreenLightSpreader.ViewModel
             }
         }
 
-        public bool Automode
+        public bool Running
         {
-            get => _automode;
+            get => _running;
             set
             {
-                if (value == _automode) return;
-                _automode = value;
+                if (value == _running) return;
+                _running = value;
                 OnPropertyChanged();
-                if (!Automode)
-                {
-                    BtnStartText = "Start";
-                }
-                else
-                {
-                    BtnStartText = "Stop";
-                }
-
+                BtnStartText = !Running ? "Start" : "Stop";
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void InitAutostart()
+        {
+            if (IsAutostarting)
+                if (StartCommand.CanExecute(null))
+                    StartCommand.Execute(null);
+        }
+
+        private void InitViewModelProps()
+        {
+            RgbManager = new RgbManager();
+            BackgroundWorker = new BackgroundWorker();
+
+            if (Application.Current.MainWindow != null)
+                Application.Current.MainWindow.Closing += MainWindow_Closing;
+            BtnStartText = "Start";
+            ConnectedVisibility = Visibility.Hidden;
+            BackgroundWorker.DoWork += delegate(object sender, DoWorkEventArgs e)
+            {
+                RgbManager.BackgroundWorker_DoWork(sender, e, ws, BufferTimeInt);
+            };
         }
 
         private void InitCommand()
@@ -133,8 +162,6 @@ namespace ScreenLightSpreader.ViewModel
         private void InitModel()
         {
             WebSocketConnector = new WebSocketConnector();
-
-
         }
 
         private void LoadSavedValues()
@@ -142,15 +169,16 @@ namespace ScreenLightSpreader.ViewModel
             IpAdress = SaveManager.LoadIp();
             PortNumber = SaveManager.LoadPort();
             IsAutostarting = SaveManager.LoadIsAutostarting();
+            BufferTime = SaveManager.LoadBufftime();
         }
 
 
-        void MainWindow_Closing(object sender, CancelEventArgs e)
+        private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
             ws?.Close();
+            SaveSettingsCommand.Execute(null);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
