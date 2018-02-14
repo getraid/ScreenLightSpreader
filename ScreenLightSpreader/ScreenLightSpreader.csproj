@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,7 +37,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,6 +64,7 @@
     <Compile Include="Command\SaveSettingsCommand.cs" />
     <Compile Include="Command\StartCommand.cs" />
     <Compile Include="Command\TempOpenLEDControllerCommand.cs" />
+    <Compile Include="Model\DisplayToPixelManager.cs" />
     <Compile Include="Model\RGBManager.cs" />
     <Compile Include="Model\SaveManager.cs" />
     <Compile Include="Model\WebSocketConnector.cs" />

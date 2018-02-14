@@ -22,7 +22,7 @@ namespace ScreenLightSpreader.ViewModel
         private bool _isAutostarting;
         private string _portNumber;
         private bool _running;
-
+        public DisplayToPixelManager DisplayToPixelManager { get; set; }
         public MainViewModel()
         {
             InitCommand();
@@ -151,7 +151,7 @@ namespace ScreenLightSpreader.ViewModel
         public void CreateThread()
         {
             MainWorkThread = new Thread(() =>
-                RgbManager.DoWork(ws, BufferTimeInt));
+                RgbManager.DoWork(ws, BufferTimeInt, DisplayToPixelManager));
         }
 
         private void InitCommand()
@@ -164,6 +164,7 @@ namespace ScreenLightSpreader.ViewModel
         private void InitModel()
         {
             WebSocketConnector = new WebSocketConnector();
+            DisplayToPixelManager = new DisplayToPixelManager();
         }
 
         private void LoadSavedValues()

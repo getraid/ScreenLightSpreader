@@ -13,13 +13,20 @@ namespace ScreenLightSpreader.Model
 
         }
 
-        public void DoWork(WebSocket ws, int time)
+        public void DoWork(WebSocket ws, int time, DisplayToPixelManager dpm)
         {
             RgbData rgb = new RgbData(0, 0, 0);
             while (true)
             {
-                FlashWhite(ws, rgb, time);
+                GAvg(ws, time, dpm);
             }
+        }
+
+        private static void GAvg(WebSocket ws, int time, DisplayToPixelManager dpm)
+        {
+            dpm.GetAvgData().SendValues(ws);
+            System.Threading.Thread.Sleep(time);
+
         }
 
         private static void FlashWhite(WebSocket ws, RgbData rgb, int time)
@@ -42,7 +49,7 @@ namespace ScreenLightSpreader.Model
                         rgb.SendValues(ws);
                         System.Threading.Thread.Sleep(time);
                     }
-             
+
                 }
 
             }
