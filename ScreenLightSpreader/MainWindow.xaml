@@ -36,7 +36,7 @@
         <Label Content="Status:" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="26" Grid.ColumnSpan="2" Width="46"/>
         <Label Content="IP-Adress:" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Height="26" HorizontalAlignment="Center" Grid.ColumnSpan="2" Width="62"/>
         <TextBox Grid.Column="3" Height="22" Grid.Row="3" TextWrapping="Wrap" Text="{Binding IpAdress, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"/>
-        <Button Content="Save settings"  Command="{Binding SaveSettingsCommand}" Grid.Column="4" Grid.Row="6" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+        <Button Content="Save settings"  Command="{Binding SaveSettingsCommand}" Grid.Column="7" Grid.Row="8" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
         <CheckBox Content="Running" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" IsChecked="{Binding Running, UpdateSourceTrigger=PropertyChanged}" Height="14" Grid.ColumnSpan="4" IsEnabled="False"/>
         <Button Content="{Binding BtnStartText}" Command="{Binding StartCommand, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="3" VerticalContentAlignment="Center"/>
         <CheckBox Content="Set Running on start" IsChecked="{Binding IsAutostarting}" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" Grid.ColumnSpan="2" Height="14" />
@@ -44,12 +44,12 @@
         <Button Content="RGB-Controller" Command="{Binding TempOpenLedControllerCommand}" Grid.Column="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
         <Label Content="Port:" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" RenderTransformOrigin="0.625,0.423" Height="26" Width="34"/>
         <TextBox Grid.Column="6" Height="22" Grid.Row="3" TextWrapping="Wrap" Text="{Binding PortNumber, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"/>
-        <Label Content="Connected" Visibility="{Binding ConnectedVisibility}" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top" Width="75" Background="#FF8DFB88" Grid.ColumnSpan="2" Height="25"/>
+        <Label Content="Connected" Visibility="{Binding ConnectedVisibility}" Grid.Row="8" Background="#FF8DFB88" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Content="github.com/getraid/ScreenLightSpreader" VerticalAlignment="Top" Grid.ColumnSpan="4" FontSize="8" HorizontalAlignment="Left" Height="21" Width="154"/>
         <Label Content="Buffer" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="26" Width="42"/>
         <TextBox Grid.Column="6" Height="22" Grid.Row="4" TextWrapping="Wrap" Text="{Binding BufferTime, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Label Content="ms" Grid.Column="7" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="26" Width="25"/>
-        <Label Content="Don't go under 6ms. It will stutter." Grid.Column="5" Grid.Row="4" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="8" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom"/>
+        <Label Content="0 is 👌.To delay output, set buffer" Grid.Column="5" Grid.Row="4" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="8" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom"/>
 
 
     </Grid>

@@ -42,15 +42,23 @@ namespace ScreenLightSpreader.Command
                 }
                 else
                 {
-                    _mainViewModel.MainWorkThread.Abort();
-                    _mainViewModel.MainWorkThread = null;
-                    _mainViewModel.ws.Close();
+                    CloseThreadAndWsConnection();
                 }
             }
             else
             {
                 MessageBox.Show("There seems to be an error in your input.");
             }
+        }
+
+        public void CloseThreadAndWsConnection()
+        {
+            _mainViewModel.MainWorkThread?.Abort();
+            if (_mainViewModel.MainWorkThread != null)
+            {
+                _mainViewModel.MainWorkThread = null;
+            }
+            _mainViewModel.ws?.Close();
         }
 
         private void StartThreadAndWsConnection()
