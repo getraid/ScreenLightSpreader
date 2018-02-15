@@ -71,34 +71,42 @@ namespace ScreenLightSpreader.Model
             int avgR = totals[2] / (width * height);
 
             bmp.UnlockBits(srcData);
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
 
-            RgbData f = new RgbData(avgR, avgG, avgB);
-            return f;
+            return ColorPush(avgR, avgG, avgB);
+
+           // RgbData f = new RgbData(avgR, avgG, avgB);
+          //  return f;
         }
 
-        [Obsolete]
-        public RgbData GetAvgDataBad()
+
+        public RgbData ColorPush(int r, int g, int b)
         {
-            Bitmap bmp = new Bitmap(1, 1);
-            Bitmap orig = GetScreenBmp();
-            using (Graphics gr = Graphics.FromImage(bmp))
+
+            double rr = r;
+            double gg = g;
+            double bb = b;
+
+            rr = rr * 1.3;
+            gg = gg * 1.3;
+            bb = bb * 0.9;
+
+            if (rr > 255)
             {
-                // updated: the Interpolation mode needs to be set to 
-                // HighQualityBilinear or HighQualityBicubic or this method
-                // doesn't work at all.  With either setting, the results are
-                // slightly different from the averaging method.
-                gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                gr.DrawImage(orig, new System.Drawing.Rectangle(0, 0, 1, 1));
+                rr = 255;
             }
-            Color pixel = bmp.GetPixel(0, 0);
-            // pixel will contain average values for entire orig Bitmap
+             if (gg > 255)
+            {
+                gg = 255;
+            }
+             if (bb > 255)
+            {
+                bb = 255;
+            }
 
-            int r = Convert.ToInt32(pixel.B);
-            int g = Convert.ToInt32(pixel.G);
-            int b = Convert.ToInt32(pixel.R);
-
-            RgbData f = new RgbData(r, g, b);
-            return f;
+         
+            return new RgbData((int)rr, (int)gg, (int)bb);
         }
 
         //https://stackoverflow.com/questions/362986/capture-the-screen-into-a-bitmap

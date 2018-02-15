@@ -178,6 +178,7 @@ namespace ScreenLightSpreader.ViewModel
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
+            MainWorkThread?.Abort();
             ws?.Close();
             SaveSettingsCommand.Execute(null);
         }
