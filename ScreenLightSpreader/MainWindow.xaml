@@ -5,51 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScreenLightSpreader.ViewModel"
         mc:Ignorable="d"
-        Title="Screen Light Spreader" Height="350" Width="525" MinWidth="505" MinHeight="235">
+        Title="Screen Light Spreader" Height="368.75" Width="525" MinWidth="505" MinHeight="310" Icon="sec.ico">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="27*"/>
-            <RowDefinition Height="20*"/>
             <RowDefinition Height="29*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="64*"/>
-            <RowDefinition Height="28*"/>
-            <RowDefinition Height="29*"/>
-            <RowDefinition Height="47*"/>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="25*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="52*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="56*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="109*"/>
+            <ColumnDefinition Width="70*"/>
             <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="70*"/>
-            <ColumnDefinition Width="110*"/>
-            <ColumnDefinition Width="70*"/>
-            <ColumnDefinition Width="38*"/>
-            <ColumnDefinition Width="90*"/>
-            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="14*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Status:" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="26" Grid.ColumnSpan="2" Width="46"/>
-        <Label Content="IP-Adress:" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Height="26" HorizontalAlignment="Center" Grid.ColumnSpan="2" Width="62"/>
-        <TextBox Grid.Column="3" Height="22" Grid.Row="3" TextWrapping="Wrap" Text="{Binding IpAdress, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"/>
-        <Button Content="Save settings"  Command="{Binding SaveSettingsCommand}" Grid.Column="7" Grid.Row="8" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
-        <CheckBox Content="Running" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" IsChecked="{Binding Running, UpdateSourceTrigger=PropertyChanged}" Height="14" Grid.ColumnSpan="4" IsEnabled="False"/>
-        <Button Content="{Binding BtnStartText}" Command="{Binding StartCommand, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="3" VerticalContentAlignment="Center"/>
-        <CheckBox Content="Set Running on start" IsChecked="{Binding IsAutostarting}" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" Grid.ColumnSpan="2" Height="14" />
-        <Label Content="Autostart" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="26" HorizontalAlignment="Center" Grid.ColumnSpan="2" Width="58"/>
-        <Button Content="RGB-Controller" Command="{Binding TempOpenLedControllerCommand}" Grid.Column="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
-        <Label Content="Port:" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" RenderTransformOrigin="0.625,0.423" Height="26" Width="34"/>
-        <TextBox Grid.Column="6" Height="22" Grid.Row="3" TextWrapping="Wrap" Text="{Binding PortNumber, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"/>
-        <Label Content="Connected" Visibility="{Binding ConnectedVisibility}" Grid.Row="8" Background="#FF8DFB88" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Status:" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Height="26" Width="46" Grid.RowSpan="2" VerticalContentAlignment="Center"/>
+        <Label Content="IP-Adress:" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Height="26" Width="62"/>
+        <TextBox Grid.Column="3" Grid.Row="3" TextWrapping="Wrap" Text="{Binding IpAdress, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Height="18"/>
+        <Button Content="Save settings"  Command="{Binding SaveSettingsCommand}" Grid.Column="9" Grid.Row="10" VerticalContentAlignment="Center" VerticalAlignment="Center" Height="20"/>
+        <CheckBox Content="Running" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" IsChecked="{Binding Running, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="6" IsEnabled="False" Height="14" VerticalContentAlignment="Center"/>
+        <Button Content="{Binding BtnStartText}" Command="{Binding StartCommand, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Grid.Row="8" Grid.ColumnSpan="4" VerticalContentAlignment="Center"/>
+        <CheckBox Content="Set Running on start" IsChecked="{Binding IsAutostarting}" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" Grid.ColumnSpan="3" Height="14" />
+        <Label Content="Autostart" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Height="26" Width="58"/>
+        <Button Content="RGB-Controller" Command="{Binding TempOpenLedControllerCommand}" Grid.Column="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Height="20"/>
+        <Label Content="Port:" Grid.Column="6" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" RenderTransformOrigin="0.625,0.423" Height="26" Width="34"/>
+        <TextBox Grid.Column="7" Grid.Row="3" TextWrapping="Wrap" Text="{Binding PortNumber, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Height="18"/>
+        <Label Content="Connected" Visibility="{Binding ConnectedVisibility}" Grid.Row="10" Background="#FF8DFB88" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Content="github.com/getraid/ScreenLightSpreader" VerticalAlignment="Top" Grid.ColumnSpan="4" FontSize="8" HorizontalAlignment="Left" Height="21" Width="154"/>
-        <Label Content="Buffer" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="26" Width="42"/>
-        <TextBox Grid.Column="6" Height="22" Grid.Row="4" TextWrapping="Wrap" Text="{Binding BufferTime, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"/>
-        <Label Content="ms" Grid.Column="7" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="26" Width="25"/>
-        <Label Content="0 is 👌.To delay output, set buffer" Grid.Column="5" Grid.Row="4" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="8" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom"/>
+        <Label Content="Buffer" Grid.Column="6" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="26" Width="42"/>
+        <TextBox Grid.Column="7" Grid.Row="4" TextWrapping="Wrap" Text="{Binding BufferTime, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Height="18"/>
+        <Label Content="ms" Grid.Column="9" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="26" Width="25"/>
+        <Label Content="0 is 👌.To delay output, set buffer" Grid.Column="6" Grid.Row="4" Grid.ColumnSpan="4" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="8" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom" Height="21" Width="127"/>
+        <CheckBox Content="Lights off on close" Grid.Column="6" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center"  Grid.ColumnSpan="4" VerticalContentAlignment="Center" Height="14" Width="117"/>
+        <Label Content="Saturation multiplier" Grid.Row="5" VerticalAlignment="Center" Grid.ColumnSpan="3" Grid.Column="1" HorizontalContentAlignment="Center" Height="25"/>
+        <TextBox Grid.Column="4" Grid.Row="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="18"/>
+        <CheckBox Content="Smoothing" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center"  VerticalContentAlignment="Center" Height="14" Width="78"/>
+        <Button Grid.ColumnSpan="2" Content="Reset " Grid.Column="6" Grid.Row="10" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="20"/>
+        <Image HorizontalAlignment="Center" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Center" Source="sec.ico" RenderTransformOrigin="0.5,0.5" Grid.Column="9"/>
 
 
     </Grid>
