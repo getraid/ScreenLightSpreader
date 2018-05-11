@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
-using ScreenLightSpreader.ViewModel;
-using PixelFormat = System.Windows.Media.PixelFormat;
-using Rectangle = System.Windows.Shapes.Rectangle;
-
+using ScreenLightSpreader.ViewModel.Data;
 
 namespace ScreenLightSpreader.Model
 {
@@ -14,8 +10,9 @@ namespace ScreenLightSpreader.Model
     {
         public float OldColorHue { get; set; }
         //Oh and yes I indeed feel bad for copying all this stackoverflow code, but I know what it does and it was exactly what i needed, so... sorry :P
+        //Maybe I will change this later on to an implementation in c++ for better performance
         //https://codereview.stackexchange.com/questions/157667/getting-the-dominant-rgb-color-of-a-bitmap#comment298530_157667
-        public RgbData GetAvgData()
+        public RgbData GetAvgData(float sat)
         {
             Bitmap bmp = GetScreenBmp();
             BitmapData srcData = bmp.LockBits(new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
@@ -68,29 +65,29 @@ namespace ScreenLightSpreader.Model
                 }
             }
 
-            int avgB = totals[0] / (width * height);
+            int avgR = totals[0] / (width * height);
             int avgG = totals[1] / (width * height);
-            int avgR = totals[2] / (width * height);
+            int avgB = totals[2] / (width * height);
 
             bmp.UnlockBits(srcData);
             GC.Collect();
             GC.WaitForPendingFinalizers();
 
-            return ColorPush(avgR, avgG, avgB);
 
-            // RgbData f = new RgbData(avgR, avgG, avgB);
-            //  return f;
+            return ColorPush(avgR, avgG, avgB,sat);
+
         }
 
         public struct HSV { public float h; public float s; public float v; }
 
         //https://stackoverflow.com/questions/28759764/c-sharp-sethue-or-alternatively-convert-hsl-to-rgb-and-set-rgb
-        public RgbData ColorPush(int r, int g, int b)
+        public RgbData ColorPush(int r, int g, int b, float sat)
         {
+          
             Color c = Color.FromArgb(255, r, g, b);
             var temp = new HSV();
 
-            float tempSat = c.GetSaturation() * 10;
+            float tempSat = c.GetSaturation() * sat;
             if (tempSat >= 1f)
             {
                 tempSat = 1f;

@@ -4,22 +4,23 @@ using ScreenLightSpreader.ViewModel;
 
 namespace ScreenLightSpreader.Command
 {
-    public class TempOpenLEDControllerCommand:ICommand
+    public class ResetSettingsCommand:ICommand
     {
-        private readonly MainViewModel _mainViewModel;
+        private readonly OptionsVM _optionsVm;
 
-        public TempOpenLEDControllerCommand(MainViewModel mainViewModel)
+        public ResetSettingsCommand(OptionsVM optionsVm)
         {
-            _mainViewModel = mainViewModel;
+            _optionsVm = optionsVm;
         }
 
         public bool CanExecute(object parameter)
         {
             return true;
         }
+
         public void Execute(object parameter)
         {
-            System.Diagnostics.Process.Start("http://"+_mainViewModel.IpAdress);
+            throw new NotImplementedException();
         }
 
         public event EventHandler CanExecuteChanged;

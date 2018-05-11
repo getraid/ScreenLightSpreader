@@ -1,0 +1,9 @@
+in screen view
+	thread erstellen
+	in thread bild berechnen
+	rgb senden.
+
+daten impl.
+save fkt
+autoload
+websocket

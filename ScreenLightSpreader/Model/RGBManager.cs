@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+﻿
 using System.Threading;
-using System.Windows;
 using ScreenLightSpreader.ViewModel;
+using ScreenLightSpreader.ViewModel.Data;
 using WebSocketSharp;
 
 namespace ScreenLightSpreader.Model
@@ -13,18 +13,24 @@ namespace ScreenLightSpreader.Model
 
         }
 
-        public void DoWork(WebSocket ws, int time, DisplayToPixelManager dpm)
+        public void DoWork(WebSocket ws, int time, DisplayToPixelManager dpm, float sat)
         {
-            RgbData rgb = new RgbData(0, 0, 0);
-            while (true)
+            while (ScreenVM.ThreadEnabled || WebSocketConnection.ConnectionEst)
             {
-                GAvg(ws, time, dpm);
+                GAvg(ws, time, dpm,sat);
             }
+            Thread.CurrentThread.Interrupt();
+    
+            //  Thread.CurrentThread.Join();
+
+
+
+
         }
 
-        private static void GAvg(WebSocket ws, int time, DisplayToPixelManager dpm)
+        private static void GAvg(WebSocket ws, int time, DisplayToPixelManager dpm, float sat)
         {
-            dpm.GetAvgData().SendValues(ws);
+            dpm.GetAvgData(sat).SendValues(ws);
             System.Threading.Thread.Sleep(time);
 
         }

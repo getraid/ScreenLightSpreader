@@ -1,0 +1,481 @@
+<Project>
+  <Name>sls</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>sls</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>App</Name>
+        <Access>Public</Access>
+        <Location left="1578" top="45" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public App()</Member>
+        <Member type="Method">public Void InitializeComponent()</Member>
+        <Member type="Method">public static Void Main()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MainWindow</Name>
+        <Access>Public</Access>
+        <Location left="1578" top="293" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Boolean _contentLoaded</Member>
+        <Member type="Constructor">public MainWindow()</Member>
+        <Member type="Method">public Void InitializeComponent()</Member>
+        <Member type="Method">Void System.Windows.Markup.IComponentConnector.Connect(Int32 connectionId, Object target)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GeneralView</Name>
+        <Access>Public</Access>
+        <Location left="1221" top="509" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Field">private Boolean _contentLoaded</Member>
+        <Member type="Constructor">public GeneralView()</Member>
+        <Member type="Method">public Void InitializeComponent()</Member>
+        <Member type="Method">Void System.Windows.Markup.IComponentConnector.Connect(Int32 connectionId, Object target)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LEDView</Name>
+        <Access>Public</Access>
+        <Location left="539" top="509" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Field">private Boolean _contentLoaded</Member>
+        <Member type="Constructor">public LEDView()</Member>
+        <Member type="Method">public Void InitializeComponent()</Member>
+        <Member type="Method">Void System.Windows.Markup.IComponentConnector.Connect(Int32 connectionId, Object target)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>OptionsView</Name>
+        <Access>Public</Access>
+        <Location left="995" top="509" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Field">private Boolean _contentLoaded</Member>
+        <Member type="Constructor">public OptionsView()</Member>
+        <Member type="Method">public Void InitializeComponent()</Member>
+        <Member type="Method">Void System.Windows.Markup.IComponentConnector.Connect(Int32 connectionId, Object target)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ScreenView</Name>
+        <Access>Public</Access>
+        <Location left="344" top="509" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Field">private Boolean _contentLoaded</Member>
+        <Member type="Constructor">public ScreenView()</Member>
+        <Member type="Method">public Void InitializeComponent()</Member>
+        <Member type="Method">Void System.Windows.Markup.IComponentConnector.Connect(Int32 connectionId, Object target)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BaseVM</Name>
+        <Access>Public</Access>
+        <Location left="1544" top="807" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Event">public event PropertyChangedEventHandler PropertyChanged</Member>
+        <Member type="Constructor">public BaseVM()</Member>
+        <Member type="Method">protected virtual Void OnPropertyChanged(String propertyName)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GeneralVM</Name>
+        <Access>Public</Access>
+        <Location left="1221" top="1171" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Property">public String IpAdress { get; set; }</Member>
+        <Member type="Property">public String Port { get; set; }</Member>
+        <Member type="Property">public Boolean AutoConnectOnOpen { get; set; }</Member>
+        <Member type="Property">public Boolean LightsOffOnClose { get; set; }</Member>
+        <Member type="Property">public Boolean ConnectionEst { get; set; }</Member>
+        <Member type="Property">public ConnectToServerCommand ConnectToServerCommand { get; set; }</Member>
+        <Member type="Constructor">public GeneralVM()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LEDVM</Name>
+        <Access>Public</Access>
+        <Location left="520" top="1171" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Constructor">public LEDVM()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MainVM</Name>
+        <Access>Public</Access>
+        <Location left="784" top="854" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public static List&lt;BaseVM&gt; BaseVm { get; set; }</Member>
+        <Member type="Property">public static WebSocket WebSocket { get; set; }</Member>
+        <Member type="Property">public static WebSocketConnector WebSocketConnector { get; set; }</Member>
+        <Member type="Constructor">public MainVM()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>OptionsVM</Name>
+        <Access>Public</Access>
+        <Location left="995" top="1171" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Property">public List&lt;BaseVM&gt; StandardBootupChoice { get; set; }</Member>
+        <Member type="Constructor">public OptionsVM()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ScreenVM</Name>
+        <Access>Public</Access>
+        <Location left="318" top="1171" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Constructor">public ScreenVM()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>RgbData</Name>
+        <Access>Public</Access>
+        <Location left="1894" top="1331" />
+        <Size width="162" height="264" />
+        <Collapsed>True</Collapsed>
+        <Member type="Field">private Int32 _b</Member>
+        <Member type="Field">private Int32 _g</Member>
+        <Member type="Field">private Int32 _r</Member>
+        <Member type="Property">public Int32 R { get; set; }</Member>
+        <Member type="Property">public Int32 G { get; set; }</Member>
+        <Member type="Property">public Int32 B { get; set; }</Member>
+        <Member type="Constructor">public RgbData()</Member>
+        <Member type="Constructor">public RgbData(Boolean white)</Member>
+        <Member type="Constructor">public RgbData(Int32 r, Int32 g, Int32 b)</Member>
+        <Member type="Method">public String GetJsonRgbObj()</Member>
+        <Member type="Method">public Void SendValues(WebSocket ws)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>WebSocketConnector</Name>
+        <Access>Public</Access>
+        <Location left="453" top="1365" />
+        <Size width="316" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Constructor">public WebSocketConnector()</Member>
+        <Member type="Method">public Void InitEventHandlers(WebSocket ws)</Member>
+        <Member type="Method">public Boolean OpenConnection(WebSocket ws)</Member>
+        <Member type="Method">private Void Ws_OnError(Object sender, ErrorEventArgs e)</Member>
+        <Member type="Method">private Void Ws_OnClose(Object sender, CloseEventArgs e)</Member>
+        <Member type="Method">private Void Ws_OnOpen(Object sender, EventArgs e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConnectToServerCommand</Name>
+        <Access>Public</Access>
+        <Location left="1237" top="1331" />
+        <Size width="416" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Field">private readonly GeneralVM GeneralVm</Member>
+        <Member type="Event">public event EventHandler CanExecuteChanged</Member>
+        <Member type="Event">event EventHandler System.Windows.Input.ICommand.CanExecuteChanged</Member>
+        <Member type="Constructor">public ConnectToServerCommand(GeneralVM generalVm)</Member>
+        <Member type="Method">public Boolean CanExecute(Object parameter)</Member>
+        <Member type="Method">public Void Execute(Object parameter)</Member>
+        <Member type="Method">private Void StartThreadAndWsConnection()</Member>
+        <Member type="Method">private Void CloseThreadAndWsConnection()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>WebSocketConnection</Name>
+        <Access>Public</Access>
+        <Location left="784" top="1078" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>Static</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="7" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1329</X>
+          <Y>1024</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1519</X>
+          <Y>934</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>553</X>
+          <Y>810</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1514</X>
+          <Y>852</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="9" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>866</X>
+          <Y>829</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1502</X>
+          <Y>876</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="10" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1103</X>
+          <Y>985</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="11" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>415</X>
+          <Y>777</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1519</X>
+          <Y>817</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="14" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>GeneralVm</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1765</X>
+          <Y>198</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>441</X>
+          <Y>377</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>429</X>
+          <Y>484</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>598</X>
+          <Y>394</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1067</X>
+          <Y>431</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1537</X>
+          <Y>413</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>844</X>
+          <Y>455</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1303</X>
+          <Y>455</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="11">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>759</X>
+          <Y>1050</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>450</X>
+          <Y>1098</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>759</X>
+          <Y>1064</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>670</X>
+          <Y>1146</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>971</X>
+          <Y>1043</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1243</X>
+          <Y>1146</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>981</X>
+          <Y>1061</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1012</X>
+          <Y>1146</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="5" second="11">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>375</X>
+          <Y>584</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="2" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Dependency" first="14" second="15">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1177</X>
+          <Y>1355</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1139</X>
+          <Y>1268</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="15" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>787</X>
+          <Y>1256</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

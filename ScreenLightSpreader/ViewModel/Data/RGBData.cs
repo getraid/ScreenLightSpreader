@@ -1,8 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Windows;
 using WebSocketSharp;
 
-namespace ScreenLightSpreader.ViewModel
+namespace ScreenLightSpreader.ViewModel.Data
 {
     /// <summary>
     /// This class is used to define RGB values and send them directly via a WebSocketSharp-connection (via serialized JSON)
@@ -49,7 +51,7 @@ namespace ScreenLightSpreader.ViewModel
             set
             {
                 if (value <= 255 && value >= 0)
-                    _b = value;
+                    _r = value;
             }
         }
 
@@ -69,7 +71,7 @@ namespace ScreenLightSpreader.ViewModel
             set
             {
                 if (value <= 255 && value >= 0)
-                    _r = value;
+                    _b = value;
             }
         }
 
@@ -77,7 +79,7 @@ namespace ScreenLightSpreader.ViewModel
         /// Serialize this object into a string
         /// </summary>
         /// <returns></returns>
-        public string GetJsonRgbObj()
+        private string GetJsonRgbObj()
         {
             var js = new DataContractJsonSerializer(typeof(RgbData));
             var ms = new MemoryStream();
@@ -94,6 +96,7 @@ namespace ScreenLightSpreader.ViewModel
         public void SendValues(WebSocket ws)
         {
             ws.Send(GetJsonRgbObj());
+
         }
     }
 }

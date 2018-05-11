@@ -12,7 +12,7 @@ namespace ScreenLightSpreader.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -38,24 +38,12 @@ namespace ScreenLightSpreader.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool automode {
+        public bool AutoConnectOnOpen {
             get {
-                return ((bool)(this["automode"]));
+                return ((bool)(this["AutoConnectOnOpen"]));
             }
             set {
-                this["automode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool isAutostarting {
-            get {
-                return ((bool)(this["isAutostarting"]));
-            }
-            set {
-                this["isAutostarting"] = value;
+                this["AutoConnectOnOpen"] = value;
             }
         }
         
@@ -80,6 +68,42 @@ namespace ScreenLightSpreader.Properties {
             }
             set {
                 this["Buffertime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LightsOffOnClose {
+            get {
+                return ((bool)(this["LightsOffOnClose"]));
+            }
+            set {
+                this["LightsOffOnClose"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string SaturationMultiplier {
+            get {
+                return ((string)(this["SaturationMultiplier"]));
+            }
+            set {
+                this["SaturationMultiplier"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SelectedIndex {
+            get {
+                return ((int)(this["SelectedIndex"]));
+            }
+            set {
+                this["SelectedIndex"] = value;
             }
         }
     }
