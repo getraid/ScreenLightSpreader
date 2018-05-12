@@ -91,6 +91,7 @@
     <Compile Include="Model\WebSocketConnector.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\0BaseVM.cs" />
+    <Compile Include="Model\ColorConverter.cs" />
     <Compile Include="ViewModel\Data\RGBData.cs" />
     <Compile Include="ViewModel\2GeneralVM.cs" />
     <Compile Include="ViewModel\4LEDVM.cs" />

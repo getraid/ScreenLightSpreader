@@ -24,12 +24,12 @@ namespace ScreenLightSpreader.ViewModel
                 OnPropertyChanged();
             }
         }
-
+        //todo in systray minimieren
         public MainVM()
         {
             ScreenVm = new ScreenVM();
             GeneralVm = new GeneralVM(ScreenVm);
-            BaseVm = new List<BaseVM> { GeneralVm, ScreenVm, new LEDVM(), new OptionsVM() };
+            BaseVm = new List<BaseVM> { GeneralVm, new LEDVM(), ScreenVm, new OptionsVM() };
 
             if (Settings.Default.SelectedIndex < 0 && Settings.Default.SelectedIndex > BaseVm.Count - 1)
             {

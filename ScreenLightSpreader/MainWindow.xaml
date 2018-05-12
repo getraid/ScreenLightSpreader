@@ -33,13 +33,13 @@
 
 
         <TabControl Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="6" SelectedIndex="{Binding SelectedIndex}">
-            <TabItem Header="General View">
+            <TabItem Header="General Settings">
                 <ContentControl Content="{Binding BaseVm[0]}" FontSize="10" />
             </TabItem>
-            <TabItem Header="Screen View">
+        <TabItem Header="LED Controller">
                 <ContentControl Content="{Binding BaseVm[1]}" FontSize="10" />
             </TabItem>
-            <TabItem Header="LED View">
+        <TabItem Header="Screen AVG">
                 <ContentControl Content="{Binding BaseVm[2]}" FontSize="10" />
             </TabItem>
             <TabItem Header="Extra Options">

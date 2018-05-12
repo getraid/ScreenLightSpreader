@@ -18,8 +18,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <xctk:ColorCanvas  UsingAlphaChannel="False"  SelectedColor="{Binding SelectedColor}" Grid.Row="2" Grid.RowSpan="2"/>
-        <Label Content="not working yet" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+        <xctk:ColorCanvas  UsingAlphaChannel="False"  SelectedColor="{Binding SelectedColor}" Grid.RowSpan="4"/>
 
     </Grid>
 </UserControl>

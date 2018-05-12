@@ -15,8 +15,6 @@ namespace ScreenLightSpreader.ViewModel
         private string _connectedLabel;
         private bool setti;
      
-
-        //todo add safefunction and safefile
         public GeneralVM(ScreenVM screenVM)
         {
             ScreenVm = screenVM;
@@ -165,11 +163,7 @@ namespace ScreenLightSpreader.ViewModel
                 var r = new RgbData(0, 0, 0);
                 r.SendValues(WebSocketConnection.WebSocket);
             }
-
             ConnectToServerCommand.CloseThreadAndWsConnection();
-            //todo close ws and thread connection
-
-            //todo safe settings
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
+using ScreenLightSpreader.Properties;
 using ScreenLightSpreader.ViewModel;
 using ScreenLightSpreader.ViewModel.Data;
 
@@ -69,10 +70,10 @@ namespace ScreenLightSpreader.Command
             if (GeneralVm.WebSocketConnector.OpenConnection(WebSocketConnection.WebSocket))
             {
                 SetConnected(true);
-                //test
-                RgbData rgb = new RgbData(0, 255, 0);
-
-                rgb.SendValues(WebSocketConnection.WebSocket);
+                
+                //Gibt in LED Controller gespeicherters Licht aus.
+                RgbData SavedRGB = new RgbData(Settings.Default.SelectedColor.R, Settings.Default.SelectedColor.G, Settings.Default.SelectedColor.B);
+                SavedRGB.SendValues(WebSocketConnection.WebSocket);
             }
             else
             {
@@ -93,6 +94,7 @@ namespace ScreenLightSpreader.Command
         {
             //todo add lights off on close when conn closed
             SetConnected(false);
+        
             ScreenVM.ThreadEnabled = false;
             GeneralVm.ScreenVm.SlsWorkThread?.Join();
             WebSocketConnection.WebSocket?.Close();

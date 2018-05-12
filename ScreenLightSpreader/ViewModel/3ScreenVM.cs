@@ -12,14 +12,14 @@ namespace ScreenLightSpreader.ViewModel
 
         public ScreenVM()
         {
-            ThreadEnabled = true;
+          ThreadEnabled = true;
 
             RgbManager = new RgbManager();
             DisplayToPixelManager = new DisplayToPixelManager();
             SlsCommand = new SLSCommand(this);
         }
 
-        public static bool ThreadEnabled { get; set; }
+     public static bool ThreadEnabled { get; set; }
 
         public int ConnInfo
         {

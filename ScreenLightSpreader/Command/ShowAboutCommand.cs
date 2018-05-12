@@ -14,7 +14,7 @@ namespace ScreenLightSpreader.Command
         public void Execute(object parameter)
         {
             MessageBox.Show(
-                "© Thomas Kellner / getraid.com. WTFPL Licence\n\nNuGet Plugins used: WebSocketSharp MIT, Extended WPF Toolkit™ Ms-PL");
+                "© Thomas Kellner - getraid.com.\nMIT Licence or do whatever you want tbh I don't care\n\nNuGet Plugins used: WebSocketSharp MIT, Extended WPF Toolkit™ Ms-PL");
         }
 
         public event EventHandler CanExecuteChanged;

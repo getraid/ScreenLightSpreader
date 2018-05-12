@@ -95,7 +95,7 @@ namespace ScreenLightSpreader.ViewModel.Data
         /// <param name="ws">WebSocketSharp Websocket-object</param>
         public void SendValues(WebSocket ws)
         {
-            ws.Send(GetJsonRgbObj());
+            ws?.Send(GetJsonRgbObj());
 
         }
     }

@@ -24,8 +24,7 @@ namespace ScreenLightSpreader.ViewModel
 
         public OptionsVM()
         {
-            //todo standart bootup
-            StandardBootupChoice = new List<string> { "General", "ScreenLightSpreader", "LED Controller" };
+            StandardBootupChoice = new List<string> { "General Settings", "LED Controller", "Screen Average Program" };
             ResetSettingsCommand = new ResetSettingsCommand(this);
             ShowAboutCommand = new ShowAboutCommand();
         }
