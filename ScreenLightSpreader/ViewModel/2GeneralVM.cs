@@ -150,7 +150,7 @@ namespace ScreenLightSpreader.ViewModel
             }
         }
 
-        private void MainWindow_Closing(object sender, CancelEventArgs e)
+        public void MainWindow_Closing(object sender, CancelEventArgs e)
         {
             ScreenVM.ThreadEnabled = false;
             //todo fix unschönheit bei thread abort

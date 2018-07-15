@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using System.Windows.Navigation;
 using ScreenLightSpreader.Model;
 using ScreenLightSpreader.Properties;
 using WebSocketSharp;
 using Microsoft.WindowsAPICodePack.ApplicationServices;
+using ScreenLightSpreader.Command;
 using ScreenLightSpreader.ViewModel.Data;
 
 
@@ -54,13 +56,20 @@ namespace ScreenLightSpreader.ViewModel
         {
             if (PowerManager.IsMonitorOn)
             {
-               LedVm.SetSelectedColour();
+                GeneralVm.ConnectToServerCommand = new ConnectToServerCommand(GeneralVm);
+                GeneralVm.ConnectToServerCommand.Execute(null);
 
+                if (ScreenVm.IsRunning)
+                {
+                    ScreenVm.SlsCommand.Execute(null);
+                }
+
+                LedVm.SetSelectedColour();
             }
             else
             {
-                RgbData r = new RgbData(0, 0, 0);
-                r.SendValues(WebSocketConnection.WebSocket);
+
+                GeneralVm.MainWindow_Closing(null, null);
             }
 
         }
