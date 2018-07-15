@@ -24,7 +24,6 @@ namespace ScreenLightSpreader.ViewModel
                 if (value.Equals(ColorConverter.GetSystemColor(Settings.Default.SelectedColor))) return;
                 Settings.Default.SelectedColor = ColorConverter.GetDrawingColor(value);
                 Settings.Default.Save();
-   
                 
                 OnPropertyChanged();
             }
@@ -33,6 +32,11 @@ namespace ScreenLightSpreader.ViewModel
         public LEDVM()
         {
             RgbData = new RgbData();
+        }
+
+        public void SetSelectedColour()
+        {
+            var x = SelectedColor;
         }
 
     }
