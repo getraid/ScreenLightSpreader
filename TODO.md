@@ -1,0 +1,11 @@
+# Todo
+- Smoothing
+- Minify to tray
+- Fix FPS in ScreenAVG (maybe through C?)
+- Update description of this repo.
+- Add more functions
+	- Logitech API integration
+	- Change on Audio
+	- Blink
+	- Cycle through colors
+	- Get colors from wallpaper
