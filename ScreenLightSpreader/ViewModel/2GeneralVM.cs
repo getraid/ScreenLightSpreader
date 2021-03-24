@@ -13,16 +13,23 @@ namespace ScreenLightSpreader.ViewModel
         private string _connectButtonText;
         private Brush _connectedForegroundColor;
         private string _connectedLabel;
-        private bool setti;
-     
+
+        private string exitButtonText;
+
+
+
+
         public GeneralVM(ScreenVM screenVM)
         {
             ScreenVm = screenVM;
             WebSocketConnector = new WebSocketConnector();
             ConnectToServerCommand = new ConnectToServerCommand(this);
+            ExitCommand  = new ExitCommand(this);
 
             ConnectedForegroundColor = Brushes.Black;
             SetConnectButtonAndLabel(false);
+            ExitButtonText = "Exit";
+
 
             if (AutoConnectOnOpen)
             {
@@ -61,6 +68,32 @@ namespace ScreenLightSpreader.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        public bool MinimizeOnStartup
+        {
+            get => Settings.Default.MinimizeOnStartup;
+            set
+            {
+                if (value == Settings.Default.MinimizeOnStartup) return;
+                Settings.Default.MinimizeOnStartup = value;
+                Settings.Default.Save();
+                OnPropertyChanged();
+            }
+        }
+
+        public bool CloseDefaultToTray
+        {
+            get => Settings.Default.CloseDefaultToTray;
+            set
+            {
+                if (value == Settings.Default.CloseDefaultToTray) return;
+                Settings.Default.CloseDefaultToTray = value;
+                Settings.Default.Save();
+                OnPropertyChanged();
+            }
+        }
+
+
 
         public bool AutoConnectOnOpen
         {
@@ -124,8 +157,21 @@ namespace ScreenLightSpreader.ViewModel
             }
         }
 
+        public string ExitButtonText
+        {
+            get => exitButtonText;
+            set
+            {
+                if (value == exitButtonText) return;
+                exitButtonText = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public ConnectToServerCommand ConnectToServerCommand { get; set; }
 
+        public ExitCommand ExitCommand { get; set; }
 
         public void SetConnectButtonAndLabel(bool connected)
         {
@@ -150,7 +196,7 @@ namespace ScreenLightSpreader.ViewModel
             }
         }
 
-        private void MainWindow_Closing(object sender, CancelEventArgs e)
+        public void MainWindow_Closing(object sender, CancelEventArgs e)
         {
             ScreenVM.ThreadEnabled = false;
             //todo fix unschönheit bei thread abort

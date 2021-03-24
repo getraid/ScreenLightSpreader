@@ -33,7 +33,7 @@
 
 
         <Label Content="IP:" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" />
-        <TextBox Grid.Column="2" Grid.Row="1" TextWrapping="Wrap"
+        <TextBox Grid.Column="2" Grid.Row="1" TextWrapping="Wrap" 
                  Text="{Binding IpAdress, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalAlignment="Center" />
         <TextBox Grid.Column="6" Grid.Row="1" TextWrapping="Wrap"
                  Text="{Binding Port, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalAlignment="Center" />
@@ -43,10 +43,20 @@
                   Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" />
         <CheckBox Content="Auto connect on open" IsChecked="{Binding AutoConnectOnOpen, Mode=TwoWay}" Grid.Column="2"
                   Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" />
-        <Button Content="{Binding ConnectButtonText}" Command="{Binding ConnectToServerCommand}" Grid.Column="3"
-                Grid.Row="6" Grid.ColumnSpan="2" />
+
+
+        <CheckBox Content="Minimize on Startup" IsChecked="{Binding MinimizeOnStartup, Mode=TwoWay}" Grid.Column="2"
+            Grid.Row="3" Grid.ColumnSpan="3" VerticalAlignment="Center"  />
+
+
+        <CheckBox Content="Close minimize to Tray" IsChecked="{Binding CloseDefaultToTray, Mode=TwoWay}" Grid.Column="5"
+            Grid.Row="3" Grid.ColumnSpan="3" VerticalAlignment="Center"  />
+
         <Label Content="{Binding ConnectedLabel, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Grid.Row="4"
                Foreground="{Binding ConnectedForegroundColor}" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" />
-
+        <Button Content="{Binding ConnectButtonText}" Command="{Binding ConnectToServerCommand}" Grid.Column="3"
+                Grid.Row="6" Grid.ColumnSpan="2" />
+        <Button Content="{Binding ExitButtonText}" Command="{Binding ExitCommand}" Grid.Column="6"
+            Grid.Row="7"  />
     </Grid>
 </UserControl>
